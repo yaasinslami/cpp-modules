@@ -6,16 +6,14 @@
 /*   By: yslami <yslami@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 17:06:31 by yslami            #+#    #+#             */
-/*   Updated: 2025/07/08 16:00:02 by yslami           ###   ########.fr       */
+/*   Updated: 2025/07/08 17:51:15 by yslami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/PhoneBook.hpp"
 
-PhoneBook::PhoneBook(void)
+PhoneBook::PhoneBook(void) :  index(0), count(0)
 {
-	this->index = 0;
-	this->empty = true;
 	printwelcome();
 }
 
@@ -47,11 +45,11 @@ void	PhoneBook::add(void)
 	std::cout << "📇 Adding a new contact..." << std::endl;
 
 	const std::string prompts[5] = {
-		"Enter a first name: ",
-		"Enter a last name: ",
-		"Enter a nickname: ",
-		"Enter a phone number: ",
-		"Enter a darkest secret: "
+		"➡ Enter a first name: ",
+		"➡ Enter a last name: ",
+		"➡ Enter a nickname: ",
+		"➡ Enter a phone number: ",
+		"➡ Enter a darkest secret: "
 	};
 
 	typedef void (Contact::*Setter)(const std::string&);
@@ -75,7 +73,8 @@ void	PhoneBook::add(void)
 
 	std::cout << contacts[index].get_nickname() << " contact added! [" << index + 1 <<  "/8]" << std::endl;
 	this->index = (this->index + 1) % 8;
-	this->empty = false;
+	if (this->count < 8)
+		this->count++;
 }
 
 void	PhoneBook::search(void)
@@ -88,9 +87,9 @@ void	PhoneBook::search(void)
 	std::string	_secret;
 	std::string	line;
 
-	if (this->empty)
+	if (!this->count)
 	{
-		std::cout << "PhoneBook is empty!" << std::endl;
+		std::cout << "📭 PhoneBook is empty. Please ADD some contacts first!" << std::endl;
 		return ;
 	}
 
@@ -99,7 +98,7 @@ void	PhoneBook::search(void)
 			<< std::setw(10) << "LastName" << "|"
 			<< std::setw(10) << "NickName" << "|"
 			<< std::endl;
-	while (i < index)
+	while (i < this->count)
 	{
 		std::cout << std::setw(10) << i + 1 << "|";
 		_fname = this->contacts[i].get_fname();
@@ -135,7 +134,7 @@ void	PhoneBook::search(void)
     		std::cout << "Invalid index!" << std::endl;
     		continue;
 		}
-		if (x >= index)
+		if (x >= this->count)
 		{
 			std::cout << "Contact [" << x + 1 << "/8] not found!" << std::endl;
 			continue;

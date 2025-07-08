@@ -6,7 +6,7 @@
 /*   By: yslami <yslami@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 16:47:36 by yslami            #+#    #+#             */
-/*   Updated: 2025/07/08 15:17:11 by yslami           ###   ########.fr       */
+/*   Updated: 2025/07/08 17:52:01 by yslami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ std::string trim(const std::string& str)
 void	printwelcome(void)
 {
 	std::cout << "📞 Welcome to the 80s PhoneBook — Where Awesome Meets Crappy Technology!" << std::endl;
-	std::cout << "Type one of the following commands to continue:" << std::endl;
+	std::cout << "🕹️ Type one of the following commands to continue:" << std::endl;
 	std::cout << "\t• ADD    → Add a new contact" << std::endl;
 	std::cout << "\t• SEARCH → Search and view a contact" << std::endl;
 	std::cout << "\t• EXIT   → Exit the program (contacts will be lost!)" << std::endl;
