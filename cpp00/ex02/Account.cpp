@@ -6,13 +6,12 @@
 /*   By: yslami <yslami@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 12:20:34 by yslami            #+#    #+#             */
-/*   Updated: 2025/07/07 21:55:02 by yslami           ###   ########.fr       */
+/*   Updated: 2025/07/08 16:12:10 by yslami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
-#include <iomanip>
 
 int	Account::_nbAccounts = 0;
 
@@ -65,15 +64,17 @@ Account::~Account(void)
 	_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex << ";amount:"
 				<< this->checkAmount() << ";closed" << std::endl;
-	_nbAccounts--;
+	this->_nbAccounts--;
 }
 
 void	Account::_displayTimestamp(void)
 {
 	time_t	now;
 
-	now = time(nullptr);
-	std::cout << std::put_time(localtime(&now), "[%Y%m%d_%H%M%S] ");
+	now = ::time(NULL);
+	char	buffer[20];
+	strftime(buffer, sizeof(buffer), "[%Y%m%d_%H%M%S] ", localtime(&now));
+	std::cout << buffer;
 }
 
 void	Account::displayAccountsInfos(void)
@@ -84,7 +85,6 @@ void	Account::displayAccountsInfos(void)
 			<< ";deposits:" << Account::getNbDeposits()
 			<< ";withdrawals:" << Account::getNbWithdrawals()
 			<< std::endl;
-
 }
 
 void	Account::makeDeposit(int deposit)

@@ -6,7 +6,7 @@
 /*   By: yslami <yslami@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 12:28:54 by yslami            #+#    #+#             */
-/*   Updated: 2025/07/06 11:39:46 by yslami           ###   ########.fr       */
+/*   Updated: 2025/07/08 16:02:23 by yslami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define CONTACT_HPP
 
 #include <string>
-#include <iostream>
 
 class Contact {
 	private:

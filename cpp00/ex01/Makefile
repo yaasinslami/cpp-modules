@@ -1,8 +1,8 @@
-CC	=	g++
+CC	=	c++
 
 NAME	=	phonebook
 
-CFLAGS	=	-Wall -Wextra -std=c++98
+CFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 HEADERS	=	inc/PhoneBook.hpp \
 			inc/Contact.hpp \
@@ -27,10 +27,10 @@ $(OBJ_DIR)/%.o: src/%.cpp $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 

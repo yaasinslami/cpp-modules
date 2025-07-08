@@ -6,32 +6,21 @@
 /*   By: yslami <yslami@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 17:06:31 by yslami            #+#    #+#             */
-/*   Updated: 2025/07/06 23:02:00 by yslami           ###   ########.fr       */
+/*   Updated: 2025/07/08 16:00:02 by yslami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/PhoneBook.hpp"
 
-static void	printwelcome(void)
-{
-	// system("clear");
-	std::cout << "📞 Welcome to the 80s PhoneBook — Where Awesome Meets Crappy Technology!" << std::endl;
-	std::cout << "Type one of the following commands to continue:" << std::endl;
-	std::cout << "\t• ADD    → Add a new contact" << std::endl;
-	std::cout << "\t• SEARCH → Search and view a contact" << std::endl;
-	std::cout << "\t• EXIT   → Exit the program (contacts will be lost!)" << std::endl;
-	std::cout << "────────────────────────────────────────────────────────" << std::endl;
-}
-
 PhoneBook::PhoneBook(void)
 {
-	index = 0;
-	empty = true;
+	this->index = 0;
+	this->empty = true;
 	printwelcome();
 }
 
-PhoneBook::~PhoneBook(void) {
-	
+PhoneBook::~PhoneBook(void)
+{	
 	std::cout << "👋 Exiting PhoneBook..." << std::endl;
 	std::cout << "All your contacts have vanished into 80s cyberspace!" << std::endl;
 }
@@ -44,7 +33,8 @@ static std::string get_input(const std::string& prompt)
 	{
 		std::cout << prompt;
 		if (!std::getline(std::cin, line))
-			return "";  // handle EOF
+			return ""; 
+
 		line = trim(line);
 		if (!line.empty())
 			return line;
@@ -52,10 +42,8 @@ static std::string get_input(const std::string& prompt)
 	}
 }
 
-
 void	PhoneBook::add(void)
 {
-	// system("clear");
 	std::cout << "📇 Adding a new contact..." << std::endl;
 
 	const std::string prompts[5] = {
@@ -83,12 +71,11 @@ void	PhoneBook::add(void)
 		line = get_input(prompts[i]);
 		if (line.empty()) return ;
 		(c.*setters[i])(line);
-		// system("clear");
 	}
 
 	std::cout << contacts[index].get_nickname() << " contact added! [" << index + 1 <<  "/8]" << std::endl;
-	index = (index + 1) % 8;
-	empty = false;
+	this->index = (this->index + 1) % 8;
+	this->empty = false;
 }
 
 void	PhoneBook::search(void)
@@ -101,12 +88,12 @@ void	PhoneBook::search(void)
 	std::string	_secret;
 	std::string	line;
 
-	if (empty)
+	if (this->empty)
 	{
 		std::cout << "PhoneBook is empty!" << std::endl;
 		return ;
 	}
-	// system("clear");
+
 	std::cout << std::setw(10) << "Index" << "|"
 			<< std::setw(10) << "FirstName" << "|"
 			<< std::setw(10) << "LastName" << "|"
@@ -132,27 +119,28 @@ void	PhoneBook::search(void)
 		std::cout << std::setw(10) << _nick << "|" << std::endl;
 		i++;
 	}
-	while (!std::cin.eof())
+
+	int x;
+	while (true)
 	{
 		std::cout << std::endl << "Select the contact's index to get more info: ";
 		if (!std::getline(std::cin, line))
-		{
-			// system("clear");
 			break ;
-		}
 		line = trim(line);
-		int	x = std::atoi(line.c_str());
-		x--;
-		if (x < 0 || x > 7)
+
+		if (line.length() == 1 && line[0] >= '1' && line[0] <= '8')
+    		x = line[0] - '1';
+		else
 		{
-			std::cout << "Invalid index!" << std::endl;
-			continue;
+    		std::cout << "Invalid index!" << std::endl;
+    		continue;
 		}
 		if (x >= index)
 		{
 			std::cout << "Contact [" << x + 1 << "/8] not found!" << std::endl;
 			continue;
 		}
+
 		std::cout << "FirstName: " << contacts[x].get_fname() << std::endl;
 		std::cout << "LastName: " << contacts[x].get_lname() << std::endl;
 		std::cout << "NickName: " << contacts[x].get_nickname() << std::endl;

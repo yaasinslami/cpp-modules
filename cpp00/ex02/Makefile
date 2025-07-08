@@ -1,8 +1,8 @@
-CC	=	g++
+CC	=	c++
 
 NAME	=	banksystem
 
-CFLAGS	=	-Wall -Wextra -std=c++98
+CFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 HEADER	=	Account.hpp
 
@@ -16,14 +16,14 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp $(HEADERS)
+%.o: %.cpp $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJS)
+	@rm -rf $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
