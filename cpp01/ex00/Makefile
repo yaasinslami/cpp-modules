@@ -1,8 +1,6 @@
-CC	=	c++
-
+CC		=	c++
 NAME	=	zombie
-
-CFLAGS	=	-Wall -Wextra -Werror -std=c++98
+CFLAGS	=	-Wall -Wextra -Werror -std=c++98 -g
 
 HEADER	=	Zombie.hpp
 
@@ -11,9 +9,8 @@ SRCS	=	newZombie.cpp \
 			Zombie.cpp \
 			main.cpp
 
-OBJ_DIR	=	src/obj
-
-OBJS	= $(SRCS:src/%.cpp=$(OBJ_DIR)/%.o)
+OBJ_DIR	=	obj
+OBJS	=	$(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
@@ -25,7 +22,7 @@ $(OBJ_DIR)/%.o: %.cpp $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -rf $(OBJS)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
 	@rm -f $(NAME)

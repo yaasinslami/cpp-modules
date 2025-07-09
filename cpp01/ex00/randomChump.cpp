@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   randomChump.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yslami <yslami@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 18:57:21 by yslami            #+#    #+#             */
-/*   Updated: 2025/07/09 14:29:46 by yslami           ###   ########.fr       */
+/*   Created: 2025/07/09 14:08:55 by yslami            #+#    #+#             */
+/*   Updated: 2025/07/09 14:22:30 by yslami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie	*newZombie(std::string name)
+void	randomChump( std::string name )
 {
-	Zombie	*zombie = new Zombie(name);
-	zombie->announce();
-	return (zombie);
+	Zombie	zombie(name);
+	zombie.announce();
 }
