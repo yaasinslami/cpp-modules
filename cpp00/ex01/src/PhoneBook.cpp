@@ -6,7 +6,7 @@
 /*   By: yslami <yslami@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 17:06:31 by yslami            #+#    #+#             */
-/*   Updated: 2025/07/08 17:51:15 by yslami           ###   ########.fr       */
+/*   Updated: 2025/07/09 10:55:09 by yslami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,6 @@ PhoneBook::~PhoneBook(void)
 {	
 	std::cout << "👋 Exiting PhoneBook..." << std::endl;
 	std::cout << "All your contacts have vanished into 80s cyberspace!" << std::endl;
-}
-
-static std::string get_input(const std::string& prompt)
-{
-	std::string line;
-
-	while (true)
-	{
-		std::cout << prompt;
-		if (!std::getline(std::cin, line))
-			return ""; 
-
-		line = trim(line);
-		if (!line.empty())
-			return line;
-		std::cout << "❓ Invalid input: field cannot be empty or only whitespace." << std::endl;
-	}
 }
 
 void	PhoneBook::add(void)
@@ -108,9 +91,9 @@ void	PhoneBook::search(void)
 		_secret = this->contacts[i].get_secret();
 		if (_fname.length() > 9)
 			_fname = _fname.substr(0, 9) + ".";
-		else if (_lname.length() > 9)
+		if (_lname.length() > 9)
 			_lname = _lname.substr(0, 9) + ".";
-		else if (_nick.length() > 9)
+		if (_nick.length() > 9)
 			_nick = _nick.substr(0, 9) + ".";
 
 		std::cout << std::setw(10) << _fname << "|";
