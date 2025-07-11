@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yslami <yslami@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 16:07:29 by yslami            #+#    #+#             */
-/*   Updated: 2025/07/10 10:51:16 by yslami           ###   ########.fr       */
+/*   Created: 2025/07/10 13:22:01 by yslami            #+#    #+#             */
+/*   Updated: 2025/07/11 11:06:58 by yslami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_H
-# define ZOMBIE_H
+#include "Weapon.hpp"
 
-#include <iostream>
-#include <cstdlib>
-
-#define LIMIT_MIN 1
-#define LIMIT_MAX 1000
-
-class	Zombie
+Weapon::Weapon(const std::string& _type) : type(_type)
 {
-	private:
-		std::string	_name;
-	public:
-		Zombie();
-		~Zombie();
-		void	announce(void);
-		void	set_name(std::string name);
-};
+	return ;
+}
 
-#endif
+Weapon::~Weapon(void)
+{
+	// std::cout << "Weapon destroyed" << std::endl;
+	return ;
+}
+
+std::string const&	Weapon::getType(void) const
+{
+	return this->type;
+}
+
+void	Weapon::setType(std::string const type)
+{
+	this->type = type;
+}

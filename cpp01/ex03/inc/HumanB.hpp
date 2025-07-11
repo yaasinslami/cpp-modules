@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yslami <yslami@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 16:07:29 by yslami            #+#    #+#             */
-/*   Updated: 2025/07/10 10:51:16 by yslami           ###   ########.fr       */
+/*   Created: 2025/07/10 13:17:11 by yslami            #+#    #+#             */
+/*   Updated: 2025/07/11 11:05:01 by yslami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_H
-# define ZOMBIE_H
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
 
-#include <iostream>
-#include <cstdlib>
+# include <string>
+# include "Weapon.hpp"
 
-#define LIMIT_MIN 1
-#define LIMIT_MAX 1000
-
-class	Zombie
+class	HumanB
 {
 	private:
-		std::string	_name;
+		std::string const	name;
+		Weapon const		*_weapon;
 	public:
-		Zombie();
-		~Zombie();
-		void	announce(void);
-		void	set_name(std::string name);
+		HumanB(std::string const& name);
+		~HumanB(void);
+
+		void	attack( void ) const;
+		void	setWeapon(Weapon &weapon);
 };
+
 
 #endif

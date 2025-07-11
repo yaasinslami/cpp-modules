@@ -1,14 +1,17 @@
 CC	=	c++
 
-NAME	=	horde_zombie
+NAME	=	weapons
 
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
-HEADERS	=	inc/Zombie.hpp
+HEADERS	=	inc/HumanA.hpp \
+			inc/HumanB.hpp \
+			inc/Weapon.hpp
 
-SRCS	=	src/main.cpp \
-			src/Zombie.cpp \
-			src/zombieHorde.cpp
+SRCS	=	src/HumanA.cpp \
+			src/HumanB.cpp \
+			src/Weapon.cpp \
+			src/main.cpp
 
 OBJ_DIR	=	src/obj
 

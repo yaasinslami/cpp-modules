@@ -6,11 +6,11 @@
 /*   By: yslami <yslami@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 16:24:35 by yslami            #+#    #+#             */
-/*   Updated: 2025/07/09 17:16:18 by yslami           ###   ########.fr       */
+/*   Updated: 2025/07/10 10:52:30 by yslami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Zombie.hpp"
+#include "Zombie.hpp"
 
 Zombie* zombieHorde( int N, std::string name )
 {

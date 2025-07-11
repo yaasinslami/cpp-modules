@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yslami <yslami@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/09 16:07:29 by yslami            #+#    #+#             */
-/*   Updated: 2025/07/10 10:51:16 by yslami           ###   ########.fr       */
+/*   Created: 2025/07/10 13:16:34 by yslami            #+#    #+#             */
+/*   Updated: 2025/07/11 11:04:50 by yslami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_H
-# define ZOMBIE_H
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
 
-#include <iostream>
-#include <cstdlib>
+# include <string>
+# include "Weapon.hpp"
 
-#define LIMIT_MIN 1
-#define LIMIT_MAX 1000
-
-class	Zombie
+class	HumanA
 {
 	private:
-		std::string	_name;
+		std::string const	name;
+		Weapon const		&weapon;
 	public:
-		Zombie();
-		~Zombie();
-		void	announce(void);
-		void	set_name(std::string name);
+		HumanA(std::string const& name, Weapon const &weapon);
+		~HumanA(void);
+
+		void	attack( void ) const;
 };
 
 #endif
