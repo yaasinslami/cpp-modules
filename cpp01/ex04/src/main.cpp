@@ -6,7 +6,7 @@
 /*   By: yslami <yslami@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 11:47:02 by yslami            #+#    #+#             */
-/*   Updated: 2025/07/11 18:27:00 by yslami           ###   ########.fr       */
+/*   Updated: 2025/07/12 14:10:03 by yslami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static bool	HandleInput(int ac, char **av, std::string &filename,
 {
 	if (ac != 4)
 	{
-		std::cerr << "Usage: " << av[0] << " <filename> <s1> <s2>" << std::endl;
+		std::cout << "Usage: " << av[0] << " <filename> <s1> <s2>" << std::endl;
 		return false;
 	}
 
@@ -37,7 +37,7 @@ static bool	HandleInput(int ac, char **av, std::string &filename,
 	s2 = av[3];
 	if (filename.empty() || !s1.length())
 	{
-		std::cerr << "Error: field cannot be empty or whitespace only." << std::endl;
+		std::cout << "Error: field cannot be empty or whitespace only." << std::endl;
 		return false;
 	}
 	return true;
@@ -52,10 +52,11 @@ int	main(int ac, char **av)
 	if (!HandleInput(ac, av, filename, s1, s2))
 		return 1;
 
+	std::cin.setstate(std::ios::eofbit);
 	FileReplacer replacer(filename, s1, s2);
 	if (!replacer.process())
 	{
-		std::cerr << "Replacement failed." << std::endl;
+		std::cout << "Replacement failed." << std::endl;
 		return 1;
 	}
 	else

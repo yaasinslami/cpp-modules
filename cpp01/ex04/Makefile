@@ -1,6 +1,6 @@
 CC	=	c++
 
-NAME	=	sed
+NAME	=	replace
 
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
