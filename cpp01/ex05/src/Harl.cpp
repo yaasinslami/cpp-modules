@@ -6,12 +6,13 @@
 /*   By: yslami <yslami@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 15:45:40 by yslami            #+#    #+#             */
-/*   Updated: 2025/07/12 17:02:04 by yslami           ###   ########.fr       */
+/*   Updated: 2025/07/13 11:53:05 by yslami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 #include <iostream>
+#include <string>
 
 Harl::Harl( void ) {};
 
@@ -51,16 +52,17 @@ void	Harl::complain( std::string level )
 		&Harl::error
 	};
 
-	bool	state = false;
-	for (int i = 0; i < 4; i++)
+	int i = 0;
+	while (i < 4)
 	{
 		if (levels[i] == level)
 		{
 			(this->*funcs[i])();
 			std::cout << std::endl;
-			state = true;
+			return ;
 		}
+		i++;
 	}
-	if (!state)
+	if (i == 4)
 		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 }
