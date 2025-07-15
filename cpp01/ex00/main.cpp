@@ -6,7 +6,7 @@
 /*   By: yslami <yslami@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 19:21:38 by yslami            #+#    #+#             */
-/*   Updated: 2025/07/09 15:22:58 by yslami           ###   ########.fr       */
+/*   Updated: 2025/07/15 08:57:12 by yslami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,25 @@ void	randomChump( std::string name );
 int	main(void)
 {
 	Zombie*	z1 = newZombie("Zeth");
+	if (!z1)
+		return 1;
 	Zombie*	z2 = newZombie("Z-41");
+	if (!z2)
+	{
+		delete z1;
+		return 1;
+	}
 	Zombie*	z3 = newZombie("Necron");
+	if (!z3)
+	{
+		delete z1;
+		delete z2;
+		return 1;		
+	}
 
 	randomChump("Chonky");
 	randomChump("Boop");
 	randomChump("Dragg");
-
-	z1->announce();
-	z2->announce();
-	z3->announce();
 
 	delete z1;
 	delete z2;
