@@ -6,14 +6,16 @@
 /*   By: yslami <yslami@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 11:21:15 by yslami            #+#    #+#             */
-/*   Updated: 2025/07/12 14:53:21 by yslami           ###   ########.fr       */
+/*   Updated: 2025/07/15 14:05:59 by yslami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILEREPLACER_HPP
 #define FILEREPLACER_HPP
 
-#include <string>
+#include <fstream>
+#include <iostream>
+#include <sys/stat.h>
 
 class FileReplacer 
 {

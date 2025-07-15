@@ -6,11 +6,10 @@
 /*   By: yslami <yslami@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 11:47:02 by yslami            #+#    #+#             */
-/*   Updated: 2025/07/12 14:10:03 by yslami           ###   ########.fr       */
+/*   Updated: 2025/07/15 14:02:54 by yslami           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "FileReplacer.hpp"
 
 static std::string trim(const std::string& str)
@@ -52,7 +51,6 @@ int	main(int ac, char **av)
 	if (!HandleInput(ac, av, filename, s1, s2))
 		return 1;
 
-	std::cin.setstate(std::ios::eofbit);
 	FileReplacer replacer(filename, s1, s2);
 	if (!replacer.process())
 	{
