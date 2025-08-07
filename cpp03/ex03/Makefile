@@ -1,14 +1,16 @@
 CC	=	c++
 
-NAME	=	ex01
+NAME	=	ex02
 
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 HEADERS	=	inc/ClapTrap.hpp \
-			inc/ScavTrap.hpp
+			inc/ScavTrap.hpp \
+			inc/FragTrap.hpp
 
 SRCS	=	src/ClapTrap.cpp \
 			src/ScavTrap.cpp \
+			src/FragTrap.cpp \
 			src/main.cpp
 
 OBJ_DIR	=	obj

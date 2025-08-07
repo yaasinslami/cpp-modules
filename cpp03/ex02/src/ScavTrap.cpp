@@ -30,7 +30,10 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& other)
 {
 	if (this != &other)
 	{
-		ClapTrap::operator=(other);
+		this->_name = other._name;
+		this->_hitPoints = other._hitPoints;
+		this->_energyPoints = other._energyPoints;
+		this->_attackDamage = other._attackDamage;
 		this->guardMode = other.guardMode;
 		std::cout << "ScavTrap Assignment Operator Called" << std::endl;
 	}
