@@ -16,9 +16,8 @@ int	main()
 		Dog	dog("Jack");
 		dog.makeSound();
 
-		dog = *dynamic_cast<Dog*>(animalp);
+		dog = *static_cast<Dog*>(animalp);
 		dog.makeSound();
-
 
 		delete animalp;
 	}
@@ -37,7 +36,6 @@ int	main()
 		std::cout << "------------- Wrong Scope -------------" << std::endl;
 
 		const WrongAnimal& wcat = WrongCat("WrongCatty");
-
 
 		wcat.makeSound();
 	}

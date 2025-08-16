@@ -17,7 +17,10 @@ class	Dog : public Animal
 		Dog&	operator=(const Dog& other);
 
 		std::string const	&getName(void) const;
+		void				setName(const std::string& name);
 		Brain&				getBrain( void ) const;
+		void				setBrain(const Brain& otherBrain);
+		void				logIdea(int idx) const;
 
 		void		makeSound( void ) const;
 };

@@ -44,7 +44,7 @@ int main()
 
 		*dog0 = *dog1;
 
-		dog1->getBrain().setIdea(0, "No, I want to sleep");
+		dog1->getBrain().setIdea(0, "No, I dont want to sleep");
 		dog0->logIdea(0);
 		dog1->logIdea(0);
 

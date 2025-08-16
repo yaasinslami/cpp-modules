@@ -4,17 +4,17 @@
 #include "Brain.hpp"
 #include <iostream>
 
-class	Cat : public Animal
+class	Dog : public Animal
 {
 	private:
 		std::string	_name;
 		Brain		*_brain;
 	public:
-		Cat( void );
-		Cat(const std::string& type);
-		Cat(const Cat& other);
-		~Cat();
-		Cat&	operator=(const Cat& other);
+		Dog( void );
+		Dog(const std::string& type);
+		Dog(const Dog& other);
+		~Dog();
+		Dog&	operator=(const Dog& other);
 
 		std::string const	&getName(void) const;
 		void				setName(const std::string& name);
