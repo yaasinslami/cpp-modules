@@ -1,8 +1,11 @@
 #include "Ice.hpp"
 
-Ice::Ice( void ) : AMateria("ice") {}
+Ice::Ice( void ) : AMateria("ice")
+{
+	std::cout << "Materia [" << this->getType() << "] Constructed" << std::endl;
+}
 
-Ice::Ice(const Ice& other) { (void)other; }
+Ice::Ice(const Ice& other) :  AMateria("ice") { (void)other; }
 
 Ice::~Ice() {}
 

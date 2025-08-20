@@ -2,21 +2,13 @@
 
 #include "ICharacter.hpp"
 
-struct TrashNode
-{
-	AMateria *materia;
-	TrashNode *next;
 
-	TrashNode(AMateria* m, TrashNode* n) : materia(m), next(n) {}
-};
 
 class	Character : public ICharacter
 {
 	private:
 		std::string	_name;
 		AMateria*	_bag[4];
-		TrashNode*	_trashHead;
-		void		addToTrash(AMateria* m);
 	public:
 		Character( void );
 		Character(const std::string& name);

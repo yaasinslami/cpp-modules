@@ -49,7 +49,7 @@ void	MateriaSource::learnMateria(AMateria* m)
 {
 	if (!m)
 	{
-		std::cout << "Invalid Materia" << std::endl;
+		std::cout << "Invalid Materia Cannot Learned" << std::endl;
 		return;
 	}
 
@@ -63,7 +63,6 @@ void	MateriaSource::learnMateria(AMateria* m)
 			return;
 		}
 	}
-
 	std::cout << "Materia " << m->getType() << " can't be added, materias bag is full" << std::endl;
 	delete m;
 }

@@ -1,8 +1,11 @@
 #include "Cure.hpp"
 
-Cure::Cure( void ) : AMateria("cure") {}
+Cure::Cure( void ) : AMateria("cure")
+{
+	std::cout << "Materia [" << this->getType() << "] Constructed" << std::endl;
+}
 
-Cure::Cure(const Cure& other) { (void)other; }
+Cure::Cure(const Cure& other) :  AMateria("cure") { (void)other; }
 
 Cure::~Cure() {}
 

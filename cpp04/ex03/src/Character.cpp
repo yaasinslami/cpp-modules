@@ -1,6 +1,6 @@
 #include "Character.hpp"
 
-Character::Character( void ) : _name("default")
+Character::Character( void ) : _name("defaultName")
 {
 	for (int i = 0; i < 4; i++)
 		this->_bag[i] = NULL;
@@ -30,7 +30,7 @@ Character &Character::operator=(const Character &other)
 {
 	if (this != &other)
 	{
-		_name = other._name;
+		this->_name = other._name;
 
 		for (int i = 0; i < 4; i++)
 		{
@@ -52,15 +52,6 @@ Character::~Character()
 	{
 		if (this->_bag[i])
 			delete this->_bag[i];
-	}
-
-	TrashNode *current = this->_trashHead;
-	while (current)
-	{
-		TrashNode *next = current->next;
-		delete current->materia;
-		delete current;
-		current = next;
 	}
 	std::cout << "Character " << _name << " destroyed" << std::endl;
 }
@@ -96,39 +87,37 @@ void	Character::equip(AMateria *m)
 			return;
 		}
 	}
-	std::cout << "Bag is full, storing " << m->getType() << " in trash" << std::endl;
-	if (!this->isInBag(m))
-		delete m;
+	std::cout << "Bag is full, " << m->getType() << " cant be equiped" << std::endl;
+	// if (!this->isInBag(m))
+	// 	delete m;
 }
 
 void	Character::unequip(int idx)
 {
 	if (idx >= 0 && idx < 4 && this->_bag[idx])
 	{
-		addToTrash(this->_bag[idx]);
-		this->_bag[idx] = NULL;
 		std::cout << "Materia " << this->_bag[idx]->getType() << " unequiped from " << this->getName() << "'s inventory at index " << idx << std::endl;
+		this->_bag[idx] = NULL;
 	}
 	else if (idx < 0 || idx >= 4)
-		std::cout << "Invalid Index " << idx << std::endl;
+		std::cout << "Invalid unequip: Index must be in range [0-3]!" << std::endl;
 	else
-		std::cout << "The slot " << idx << " is empty" << std::endl;
+		std::cout << "Invalid unequip: The slot " << idx << " is empty!" << std::endl;
 }
 
 void	Character::use(int idx, ICharacter& target)
 {
+	if (this == &target)
+	{
+		std::cout << "Invalid Use: " << this->getName() << " cant attack himself!" << std::endl;
+		return ;
+	}
 	if (idx >= 0 && idx < 4 && this->_bag[idx])
 		this->_bag[idx]->use(target);
 	else if (idx < 0 || idx >= 4)
-		std::cout << "Invalid Index " << idx << std::endl;
+		std::cout << "Invalid Use: Index must be in range [0-3]!" << std::endl;
 	else
-		std::cout << "The slot " << idx << " is empty" << std::endl;
-}
-
-void	Character::addToTrash(AMateria* m)
-{
-	TrashNode*	node = new TrashNode(m, this->_trashHead);
-	this->_trashHead = node;
+		std::cout << "Invalid Use: The slot " << idx << " is empty!" << std::endl;
 }
 
 bool	Character::isInBag(AMateria *m)
