@@ -1,7 +1,6 @@
 #pragma once
 
-#include "AMateria.hpp"
-#include <iostream>
+#include <string>
 
 class	AMateria;
 

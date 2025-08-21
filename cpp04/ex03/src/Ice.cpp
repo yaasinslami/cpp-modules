@@ -5,11 +5,15 @@ Ice::Ice( void ) : AMateria("ice")
 	std::cout << "Materia [" << this->getType() << "] Constructed" << std::endl;
 }
 
-Ice::Ice(const Ice& other) :  AMateria("ice") { (void)other; }
+Ice::Ice(const Ice& other) :  AMateria(other) {}
 
 Ice::~Ice() {}
 
-Ice&	Ice::operator=(const Ice& other) { (void)other; return (*this); }
+Ice&	Ice::operator=(const Ice& other)
+{
+	this->_type = other._type;
+	return (*this);
+}
 
 AMateria*	Ice::clone() const { return (new Ice(*this)); }
 

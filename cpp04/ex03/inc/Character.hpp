@@ -1,8 +1,7 @@
 #pragma once
 
 #include "ICharacter.hpp"
-
-
+#include <iostream>
 
 class	Character : public ICharacter
 {
@@ -17,6 +16,7 @@ class	Character : public ICharacter
 		Character& operator=(const Character& other);
 
 		std::string const &getName( void ) const;
+		void				setName(const std::string& name);
 		
 		void equip(AMateria *m);
 		void unequip(int idx);

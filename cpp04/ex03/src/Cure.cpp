@@ -5,11 +5,15 @@ Cure::Cure( void ) : AMateria("cure")
 	std::cout << "Materia [" << this->getType() << "] Constructed" << std::endl;
 }
 
-Cure::Cure(const Cure& other) :  AMateria("cure") { (void)other; }
+Cure::Cure(const Cure& other) :  AMateria(other) {}
 
 Cure::~Cure() {}
 
-Cure&	Cure::operator=(const Cure& other) { (void)other; return (*this); }
+Cure&	Cure::operator=(const Cure& other)
+{
+	this->_type = other._type;
+	return (*this);
+}
 
 AMateria*	Cure::clone() const { return (new Cure(*this)); }
 

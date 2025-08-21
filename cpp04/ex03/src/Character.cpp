@@ -1,3 +1,4 @@
+#include "AMateria.hpp"
 #include "Character.hpp"
 
 Character::Character( void ) : _name("defaultName")
@@ -8,7 +9,7 @@ Character::Character( void ) : _name("defaultName")
 }
 
 Character::Character(const std::string &name) : _name(name)
-{
+{ 
 	for (int i = 0; i < 4; i++)
 		this->_bag[i] = NULL;
 	std::cout << "Character " << _name << " created" << std::endl;
@@ -61,6 +62,11 @@ std::string const &Character::getName( void ) const
 	return (this->_name);
 }
 
+void	Character::setName( const std::string& name )
+{
+	this->_name = name;
+}
+
 void	Character::equip(AMateria *m)
 {
 	if (!m)
@@ -69,15 +75,13 @@ void	Character::equip(AMateria *m)
 		return;
 	}
 
-	// check if the materia already in the bag
 	if (this->isInBag(m))
 	{
 		std::cout << "Materia " << m->getType()
-				  << " is already equipped" << std::endl;
+				  << " is already equipped to " << this->getName() << "'s Inventory" << std::endl;
 		return;
 	}
 
-	// find an empty slot to store the materia
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->_bag[i] == NULL)
@@ -88,8 +92,8 @@ void	Character::equip(AMateria *m)
 		}
 	}
 	std::cout << "Bag is full, " << m->getType() << " cant be equiped" << std::endl;
-	// if (!this->isInBag(m))
-	// 	delete m;
+	if (!this->isInBag(m))
+		delete m;
 }
 
 void	Character::unequip(int idx)
@@ -117,7 +121,7 @@ void	Character::use(int idx, ICharacter& target)
 	else if (idx < 0 || idx >= 4)
 		std::cout << "Invalid Use: Index must be in range [0-3]!" << std::endl;
 	else
-		std::cout << "Invalid Use: The slot " << idx << " is empty!" << std::endl;
+		std::cout << "Invalid Use: The slot [" << idx << "] in " << getName() << "'s bag is empty!" << std::endl;
 }
 
 bool	Character::isInBag(AMateria *m)
