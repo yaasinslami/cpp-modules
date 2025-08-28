@@ -5,6 +5,7 @@
 
 int main() try
 {
+	// Seed random for RobotomyRequestForm
 	std::srand(static_cast<unsigned int>(std::time(NULL)));
 
 	/* Create bureaucrats */
