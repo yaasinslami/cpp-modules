@@ -2,9 +2,6 @@
 #define SCALARCONVERTER_HPP
 
 #include <string>
-#include <limits>
-
-#define FLT_MAX std::numeric_limits<float>::max()
 
 class ScalarConverter
 {

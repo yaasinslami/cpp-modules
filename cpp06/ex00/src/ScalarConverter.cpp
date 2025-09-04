@@ -1,6 +1,7 @@
 #include "ScalarConverter.hpp"
 #include <iomanip>
 #include <iostream>
+#include <cfloat>
 
 ScalarConverter::ScalarConverter() {}
 
@@ -12,6 +13,20 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 {
 	(void)other;
 	return *this;
+}
+
+static bool isInf(double d)
+{
+	if (d == (1.0 / 0.0) || d == (-1.0 / 0.0))
+		return (true);
+	return (false);
+}
+
+static bool isNan(double d)
+{
+	if (d != d)
+		return (true);
+	return (false);
 }
 
 static bool isDouble(const std::string &literal)
@@ -68,7 +83,7 @@ void ScalarConverter::convert(const std::string &literal)
 		std::cout << "char: ";
 		if (std::isprint(n))
 			std::cout << "'" << static_cast<char>(n) << "'" << std::endl;
-		else if (isnan(n) || isinf(n) || n < 0 || n > 127)
+		else if (isNan(n) || isInf(n) || n < 0 || n > 127)
 			std::cout << "impossible" << std::endl;
 		else
 			std::cout << "Non displayable" << std::endl;
@@ -97,23 +112,23 @@ void ScalarConverter::convert(const std::string &literal)
 		std::cout << "char: ";
 		if (std::isprint(static_cast<int>(f)))
 			std::cout << "'" << static_cast<char>(f) << "'" << std::endl;
-		else if (isnan(f) || isinf(f) || f < 0 || f > 127)
+		else if (isNan(f) || isInf(f) || f < 0 || f > 127)
 			std::cout << "impossible" << std::endl;
 		else
 			std::cout << "Non displayable" << std::endl;
-		if (isnan(f) || isinf(f) || f > INT_MAX || f < INT_MIN)
+		if (isNan(f) || isInf(f) || f > INT_MAX || f < INT_MIN)
 			std::cout << "int: impossible" << std::endl;
 		else
 			std::cout << "int: " << static_cast<int>(f) << std::endl;
 
-		if (isinf(f))
+		if (isInf(f))
 		{
 			if (f > 0)
 				std::cout << "float: inff" << std::endl;
 			else
 				std::cout << "float: -inff" << std::endl;
 		}
-		else if (isnan(f))
+		else if (isNan(f))
 			std::cout << "float: nanf" << std::endl;
 		else if (f > FLT_MAX || f < -FLT_MAX)
 			std::cout << "float: impossible" << std::endl;
@@ -124,3 +139,6 @@ void ScalarConverter::convert(const std::string &literal)
 	else
 		std::cout << "Invalid input!" << std::endl;
 }
+// int: 2147483647
+// float: 3.40282e+38f
+// double: 1.79769e+308
