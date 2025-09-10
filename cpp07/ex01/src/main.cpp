@@ -2,9 +2,9 @@
 #include <iostream>
 
 template <typename T>
-void	print(T a)
+void	print(const T& a)
 {
-	std::cout << a << " ";
+	std::cout << a << " " << std::endl;
 }
 
 void	increment(int& i)
@@ -14,9 +14,14 @@ void	increment(int& i)
 
 int	main()
 {
-	const int arr[5] = {4, 1, 0, 7, -1};
+	int arr[5] = {4, 1, 0, 7, -1};
+	
+	std::cout << "Before increment" << std::endl;
+	iter(arr, 5, print<int>);
+
 	iter(arr, 5, increment);
 
+	std::cout << "After increment" << std::endl;
 	iter(arr, 5, print<int>);
 }
 
